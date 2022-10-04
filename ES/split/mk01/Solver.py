@@ -14,6 +14,8 @@ N = Simulator.dim()
 # (max+1)回以上，Simulator.evaluate(w)を呼び出すとエラー
 max = Simulator.evalmax()
 
+par = 1 #親の数
+
 # ここから下を自分で開発
 # このサンプルは 上限回数まで 解をランダムに作って評価しているだけ
 
@@ -32,13 +34,13 @@ for i in range(len(checkList)):
 	if(testScore==0 or max==0): Simulator.finish()
 	score.append(testScore)
 
-core = SolverDef.minScore(score, checkList)
-
+core = SolverDef.minScore(score, checkList, par)
 
 while True:
 	checkList = [] # シュミレーション用データ
-	for i in range(10):
-		checkList.append(SolverDef.evoAddress(core))
+	for i in range(len(core)):
+		for j in range(10): #進化計算
+			checkList.append(SolverDef.evoAddress(core[i]))
 
 	# 更新後スコア作成
 	score = []
@@ -48,6 +50,6 @@ while True:
 		max -= 1
 		if(testScore==0 or max==0): Simulator.finish()
 		score.append(testScore)
-	core = SolverDef.minScore(score, checkList)
+	core = SolverDef.minScore(score, checkList,par)
 
 Simulator.finish()

@@ -1,5 +1,7 @@
 import random
 
+bit = 150  #ビット反転数
+
 # ランダムなアドレスを返す
 # 引数は出力する長さ
 def makeRandAddress(len):
@@ -10,17 +12,22 @@ def makeRandAddress(len):
 
 
 # 最小スコアの配列を返す
-# 引数はスコアとアドレス
-def minScore(score, address):
-    minTmp = min(score)
-    index = score.index(minTmp)
-    return address[index]
+# 引数はスコアとアドレスと親の数
+def minScore(score, address, par):
+    core = []
+    sortdScore = []
+    sortdScore = sorted(score)
+    for i in range(par):
+        minTmp = sortdScore[i]
+        index = score.index(minTmp)
+        core.append(address[index])
+    return core
 
 
 # ランダムに1/10個値を反転させる
 # 引数は配列
 def evoAddress(core):
-    limit = int(len(core) / 10) # 反転させる要素数
+    limit = int(len(core) / bit) # 反転させる要素数
     chengeAddress = []
     for i in range(limit):
         while True:

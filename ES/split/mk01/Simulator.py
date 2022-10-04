@@ -47,5 +47,5 @@ def evaluate(answer):
 	return sum
 
 def finish(): 
-	print(count, fbest, wbest, sep="\t")
+	print(fbest, sep="\t")
 	sys.exit()
