@@ -17,6 +17,8 @@ def minScore(score, address):
     return address[index]
 
 
+# ランダムに1/10個値を反転させる
+# 引数は配列
 def evoAddress(core):
     limit = int(len(core) / 10) # 反転させる要素数
     chengeAddress = []
@@ -27,9 +29,8 @@ def evoAddress(core):
                 chengeAddress.append(tmp)
                 break
 
-    for i in range(limit):
+    for i in range(len(chengeAddress)):
         tmp = chengeAddress[i]
-        tmp = 0
         if(core[tmp] == 0):
             core[tmp] = 1
         else:

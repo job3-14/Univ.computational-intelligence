@@ -44,10 +44,10 @@ while True:
 	score = []
 	for i in range(len(checkList)):
 		testScore = Simulator.evaluate(checkList[i])
+		#print(checkList[i])
 		max -= 1
 		if(testScore==0 or max==0): Simulator.finish()
 		score.append(testScore)
 	core = SolverDef.minScore(score, checkList)
-	print(".")
 
 Simulator.finish()
